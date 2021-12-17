@@ -1,0 +1,143 @@
+buildscript {
+    ext {
+        jfrogVersion = '4.9.8'
+        axionVersion = '1.10.0'
+        androidGradleVersion = '4.2.2'
+        kotlinVersion = '1.5.21'
+        coroutinesVersion = '1.5.1'
+        jacocoVersion = '0.8.7'
+        kafCoreVersion = '6.0.5'
+        spsExtrasVersion = '2.5.0'
+        inAppTrainingVersion = '2.5.0'
+
+        artifactoryUrl = System.env.ARTIFACTORY_URL == null
+                ? 'https://artifactory.kroger.com/artifactory'
+                : "${System.env.ARTIFACTORY_URL}"
+        artifactoryUsername = System.env.ARTIFACTORY_USERNAME == null
+                ? null
+                : "${System.env.ARTIFACTORY_USERNAME}"
+        artifactoryPassword = System.env.ARTIFACTORY_PASSWORD == null
+                ? null
+                : "${System.env.ARTIFACTORY_PASSWORD}"
+
+        mavenRepo = { maven, repo ->
+            maven.url "${artifactoryUrl}/${repo}"
+            if (artifactoryUsername != null) {
+                maven.credentials {
+                    username artifactoryUsername
+                    password artifactoryPassword
+                }
+            }
+        }
+    }
+    repositories {
+        ['google-maven', 'gradle-plugins', 'remote-repos'].each { mavenRepo maven {}, it }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:${androidGradleVersion}"
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:${jfrogVersion}"
+        classpath "pl.allegro.tech.build:axion-release-plugin:${axionVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+        classpath "org.jacoco:org.jacoco.core:${jacocoVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:${kotlinVersion}"
+    }
+}
+
+apply plugin: 'pl.allegro.tech.build.axion-release'
+
+ext {
+    groupId = "com.kroger.sps.grinder"
+    version = scmVersion.version
+    versionName = scmVersion.version
+    versionCode = getVersionCodeFromVersionName(versionName)
+
+    //Android Versions
+    targetSdkVersion = 29
+    compileSdkVersion = 29
+    minSdkVersion = 24
+
+    javaVersion = JavaVersion.VERSION_1_8
+}
+
+ext.deps = [
+        kafCoreApplication        : "com.kroger.mobile.kaf.core:application:$kafCoreVersion",
+        kafCoreAuth               : "com.kroger.mobile.kaf.core:auth:$kafCoreVersion",
+        kafCoreAuthAppAuth        : "com.kroger.mobile.kaf.core:auth-appauth:$kafCoreVersion",
+        kafCoreEnvResolver        : "com.kroger.mobile.kaf.core:envresolver:$kafCoreVersion",
+        kafCoreHttp               : "com.kroger.mobile.kaf.core:http:$kafCoreVersion",
+        kafCoreLocation           : "com.kroger.mobile.kaf.core:location:$kafCoreVersion",
+        kafCoreLog                : "com.kroger.mobile.kaf.core:log:$kafCoreVersion",
+        kafCoreMockContext        : "com.kroger.mobile.kaf.core:mock-context:$kafCoreVersion",
+
+        // MQTT
+        pahoClient                : 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.1',
+        pahoService               : 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1',
+        kafCoreMqtt               : "com.kroger.mobile.kaf.core:mqtt:$kafCoreVersion",
+
+        kafCorePreferences        : "com.kroger.mobile.kaf.core:preferences:$kafCoreVersion",
+        kafCoreScanner            : "com.kroger.mobile.kaf.core:scanner:$kafCoreVersion",
+        kafCoreCaptureLog         : "com.kroger.mobile.kaf.core:capture-log:$kafCoreVersion",
+        kafCoreAnalytics          : "com.kroger.mobile.kaf.core:analytics:$kafCoreVersion",
+        kds                       : 'com.kroger.mobile:android-kds:6.1.4',
+
+        satAbout                  : "com.kroger.sps.mobile:sat-about:$spsExtrasVersion",
+        satNotifications          : "com.kroger.sps.mobile:sat-notifications:$spsExtrasVersion",
+        satApp                    : "com.kroger.sps.mobile:sat-app:$spsExtrasVersion",
+        satUI                     : "com.kroger.sps.mobile:sat-ui:$spsExtrasVersion",
+        satAnalytics              : "com.kroger.sps.mobile:sat-analytics:$spsExtrasVersion",
+        satAppProperties          : "com.kroger.sps.mobile:sat-appproperties:$spsExtrasVersion",
+        satBehavioralAnalytics    : "com.kroger.sps.mobile:sat-behavioral-analytics-instock:$spsExtrasVersion",
+        spsTutorial               : "com.kroger.sps.mobile:tutorial:$inAppTrainingVersion",
+
+        gson                      : 'com.google.code.gson:gson:2.8.6',
+        okhttpLogging             : 'com.squareup.okhttp3:logging-interceptor:3.9.1',
+
+        emdk                      : 'com.symbol:emdk:7.6.10',
+        zbar                      : 'me.dm7.barcodescanner:zbar:1.9.8',
+        datalogic                 : 'com.github.datalogic:datalogic-android-sdk:1.12',
+        honeywell                 : 'com.honeywell.aidc:DataCollection:1.92.00.0006@aar',
+
+        junit                     : 'junit:junit:4.12',
+        mockito                   : 'org.mockito:mockito-core:2.24.5',
+        mockitoInline             : 'org.mockito:mockito-inline:2.13.0',
+        androidxJunitExt          : 'androidx.test.ext:junit:1.1.1',
+        androidxCoreTesting       : "androidx.test:core:1.2.0",
+        androidxArchCoreTesting   : 'androidx.arch.core:core-testing:2.0.0',
+        mockitoKotlin             : 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0',
+
+        androidxAppCompat         : 'androidx.appcompat:appcompat:1.3.1',
+        androidxConstraintLayout  : 'androidx.constraintlayout:constraintlayout:1.1.3',
+        kotlinStdLib              : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+
+        androidxCoreKtx           : "androidx.core:core-ktx:1.2.0",
+        androidxFragmentKtx       : "androidx.fragment:fragment-ktx:1.2.4",
+
+        kotlinxAndroidxCoroutine  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7",
+        kotlinxCoroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+        kotlinxCoroutinesTest     : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.5",
+
+        androidxNavigationUI      : "androidx.navigation:navigation-ui-ktx:2.3.0",
+        androidxNavigationFragment: "androidx.navigation:navigation-fragment-ktx:2.3.0",
+
+        //KotlinX
+        kotlinxJson               : 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1'
+]
+
+scmVersion {
+    checks {
+        aheadOfRemote = false
+    }
+    repository {
+        pushTagsOnly = true
+        remote = "pushback"
+    }
+}
+
+static def getVersionCodeFromVersionName(String versionName) {
+    def tokens = versionName.split("[-.]")
+    def versionMajor = tokens[0].toInteger()
+    def versionMinor = tokens[1].toInteger()
+    def versionPatch = tokens[2].toInteger()
+
+    return versionMajor * 10000 + versionMinor * 100 + versionPatch
+}

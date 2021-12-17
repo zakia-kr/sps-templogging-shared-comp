@@ -1,0 +1,27 @@
+repositories {
+    ['google-maven', 'remote-repos', 'kroger-dcp', 'kroger-software-engineering'].each { mavenRepo maven {}, it }
+    mavenRepo maven { metadataSources { artifact() } }, 'libs-android'
+}
+
+project.ext {
+    isAndroid = plugins.hasPlugin('com.android.library') || plugins.hasPlugin('com.android.application') || plugins.hasPlugin('kotlin-android')
+    isJava = plugins.hasPlugin('java') || plugins.hasPlugin('java-library') || plugins.hasPlugin('kotlin')
+    isLibrary = plugins.hasPlugin('com.android.library') || isJava
+    isPublish = plugins.hasPlugin("maven-publish")
+    gradleSubDir = "${rootDir}/build-scripts/" + (isAndroid ? 'android' : 'java')
+
+    File testDir = file('src/test')
+    hasTests = testDir.exists() && testDir.list().length > 0
+}
+
+apply from: "$gradleSubDir/modules.gradle"
+
+// Run Jacoco for all libraries.
+if (hasTests) {
+    apply from: "$rootDir/build-scripts/jacoco.gradle"
+}
+
+// Publish if they have the maven-publish plugin or are a library.
+if (isPublish) {
+    apply from: "$rootDir/build-scripts/publish.gradle"
+}

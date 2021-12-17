@@ -1,0 +1,34 @@
+java {
+    withSourcesJar()
+}
+
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Implementation-Title': project.name,
+                'Implementation-Version': scmVersion.version,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version')
+    }
+}
+
+artifactoryPublish.dependsOn("jar")
+publishToMavenLocal.dependsOn("jar")
+
+afterEvaluate {
+    publishing {
+        publications {
+            'release'(MavenPublication) {
+                from components.java
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Kds.Kroger.Theme">
+        <!-- Customize your theme here. -->
+        <item name="surfaceBackground">@color/kds_ink_color_default_200</item>
+    </style>
+
+</resources>

@@ -1,0 +1,38 @@
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        'release'(MavenPublication) {
+            groupId rootProject.ext.groupId
+            version rootProject.ext.version
+            artifactId project.name
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+artifactory {
+    contextUrl = rootProject.ext.artifactoryUrl
+    publish {
+        repository {
+            repoKey = 'kroger-software-engineering'
+            username = rootProject.ext.artifactoryUsername
+            password = rootProject.ext.artifactoryPassword
+        }
+        defaults {
+            publications('release')
+            publishArtifacts = true
+
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team': 'core']
+            // Publish generated POM files to Artifactory (true by default)
+            publishPom = true
+        }
+    }
+}
+
+apply from: "${gradleSubDir}/publish.gradle"

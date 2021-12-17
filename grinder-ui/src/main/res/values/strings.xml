@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grinder_application_title">Grinder</string>
+    <string name="grinder_options">Grinder Options</string>
+    <string name="label_grind">Grind</string>
+</resources>

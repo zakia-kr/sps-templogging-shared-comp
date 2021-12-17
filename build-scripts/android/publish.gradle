@@ -1,0 +1,15 @@
+afterEvaluate {
+    task sourcesJar(type: Jar) {
+        from android.sourceSets.main.java.srcDirs
+        classifier "sources"
+    }
+
+    publishing {
+        publications {
+            'release'(MavenPublication) {
+                artifact(sourcesJar)
+                from components.release
+            }
+        }
+    }
+}

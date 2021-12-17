@@ -1,0 +1,358 @@
+{
+  "environments": [
+    {
+      "name": "dev",
+      "displayName": "Development"
+    },
+    {
+      "name": "test",
+      "displayName": "Test"
+    },
+    {
+      "name": "qa",
+      "displayName": "QA"
+    },
+    {
+      "name": "cert",
+      "displayName": "Cert"
+    },
+    {
+      "name": "prod",
+      "displayName": "Production"
+    }
+  ],
+  "namespaces": [
+    {
+      "name": "features",
+      "displayName": "Features",
+      "settings": [
+        {
+          "name": "enableFAQ",
+          "displayName": "Enable FAQ",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "showTutorial",
+          "displayName": "Show Tutorial",
+          "type": "BOOLEAN"
+        }
+      ]
+    },
+    {
+      "name": "grinder",
+      "displayName": "Grinder",
+      "settings": [
+        {
+          "name": "enableGrinder",
+          "displayName": "Enable GRINDER",
+          "type": "BOOLEAN"
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "displayName": "config",
+      "settings": [
+        {
+          "name": "API_CONFIG_GATEWAY_URL",
+          "displayName": "API_CONFIG_GATEWAY_URL",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "testdata",
+      "displayName": "Test Data",
+      "settings": [
+        {
+          "name": "allowTestData",
+          "displayName": "Allow Test Data",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "useTestData",
+          "displayName": "Use Test Data",
+          "type": "BOOLEAN"
+        }
+      ]
+    },
+    {
+      "name": "spscfg",
+      "displayName": "spscfg",
+      "settings": [
+        {
+          "name": "API_FAQLIST_URL",
+          "displayName": "API_FAQLIST_URL",
+          "type": "STRING"
+        },
+        {
+          "name": "API_WALKTHROUGH",
+          "displayName": "API_WALKTHROUGH",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "displayName": "Auth",
+      "settings": [
+        {
+          "name": "authorizationEndpoint",
+          "displayName": "Authorization Endpoint",
+          "type": "STRING"
+        },
+        {
+          "name": "tokenEndpoint",
+          "displayName": "Token Endpoint",
+          "type": "STRING"
+        },
+        {
+          "name": "registrationEndpoint",
+          "displayName": "Registration Endpoint",
+          "type": "STRING"
+        },
+        {
+          "name": "redirectUri",
+          "displayName": "Redirect Uri",
+          "type": "STRING"
+        },
+        {
+          "name": "clientId",
+          "displayName": "Client Id",
+          "type": "PASSWORD"
+        },
+        {
+          "name": "clientSecret",
+          "displayName": "Client Secret",
+          "type": "PASSWORD"
+        }
+      ]
+    },
+    {
+      "name": "firestore",
+      "displayName": "Firestore Settings",
+      "settings": [
+        {
+          "name": "FIRESTORE_DIAGNOSTICS_COLLECTION",
+          "displayName": "Diagnostics Collection Name",
+          "type": "STRING"
+        },
+        {
+          "name": "FIRESTORE_ISSUES_COLLECTION",
+          "displayName": "FIRESTORE_ISSUES_COLLECTION",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "littlebird",
+      "displayName": "Little Bird Notifications",
+      "settings": [
+        {
+          "name": "LITTLEBIRD_BASE_URL",
+          "displayName": "LITTLEBIRD_BASE_URL",
+          "type": "STRING"
+        }
+      ]
+    }
+  ],
+  "values": [
+    {
+      "environmentName": "dev",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_ISSUES_COLLECTION",
+      "value": "issuesDevelopment"
+    },
+    {
+      "environmentName": "qa",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_ISSUES_COLLECTION",
+      "value": "issuesQA"
+    },
+    {
+      "environmentName": "test",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_ISSUES_COLLECTION",
+      "value": "issuesQA"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_ISSUES_COLLECTION",
+      "value": "issues"
+    },
+    {
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_ISSUES_COLLECTION",
+      "value": "issues"
+    },
+    {
+      "environmentName": "dev",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_DIAGNOSTICS_COLLECTION",
+      "value": "diagnosticsDevelopment"
+    },
+    {
+      "environmentName": "qa",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_DIAGNOSTICS_COLLECTION",
+      "value": "diagnosticsQA"
+    },
+    {
+      "environmentName": "test",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_DIAGNOSTICS_COLLECTION",
+      "value": "diagnosticsQA"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_DIAGNOSTICS_COLLECTION",
+      "value": "diagnostics"
+    },
+    {
+      "namespaceName": "firestore",
+      "settingName": "FIRESTORE_DIAGNOSTICS_COLLECTION",
+      "value": "diagnostics"
+    },
+    {
+      "environmentName": "test",
+      "namespaceName": "config",
+      "settingName": "API_CONFIG_GATEWAY_URL",
+      "value": "https://test.instock.kroger.biz/"
+    },
+    {
+      "environmentName": "qa",
+      "namespaceName": "config",
+      "settingName": "API_CONFIG_GATEWAY_URL",
+      "value": "https://uat.instock.kroger.biz/"
+    },
+    {
+      "environmentName": "cert",
+      "namespaceName": "config",
+      "settingName": "API_CONFIG_GATEWAY_URL",
+      "value": "https://uat.instock.kroger.biz/"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "config",
+      "settingName": "API_CONFIG_GATEWAY_URL",
+      "value": "https://instock.kroger.biz/"
+    },
+    {
+      "namespaceName": "config",
+      "settingName": "API_CONFIG_GATEWAY_URL",
+      "value": "https://dev.instock.kroger.biz/"
+    },
+    {
+      "namespaceName": "features",
+      "settingName": "enableFAQ",
+      "value": "true"
+    },
+    {
+      "namespaceName": "grinder",
+      "settingName": "enableGrinder",
+      "value": "true"
+    },
+    {
+      "namespaceName": "features",
+      "settingName": "showTutorial",
+      "value": "true"
+    },
+    {
+      "environmentName": "dev",
+      "namespaceName": "testdata",
+      "settingName": "allowTestData",
+      "value": "true"
+    },
+    {
+      "namespaceName": "testdata",
+      "settingName": "allowTestData",
+      "value": "false"
+    },
+    {
+      "environmentName": "dev",
+      "namespaceName": "testdata",
+      "settingName": "useTestData",
+      "value": "true"
+    },
+    {
+      "namespaceName": "testdata",
+      "settingName": "useTestData",
+      "value": "false"
+    },
+    {
+      "namespaceName": "auth",
+      "settingName": "authorizationEndpoint",
+      "value": "https://kroger.oktapreview.com/oauth2/default/v1/authorize"
+    },
+    {
+      "namespaceName": "auth",
+      "settingName": "tokenEndpoint",
+      "value": "https://kroger.oktapreview.com/oauth2/default/v1/token"
+    },
+    {
+      "namespaceName": "auth",
+      "settingName": "redirectUri",
+      "value": "com.kroger.caocool://oauth2redirect"
+    },
+    {
+      "namespaceName": "auth",
+      "settingName": "clientId",
+      "value": "0oarggu226duLIflV1d6"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "auth",
+      "settingName": "authorizationEndpoint",
+      "value": "https://kroger.okta.com/oauth2/default/v1/authorize"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "auth",
+      "settingName": "tokenEndpoint",
+      "value": "https://kroger.okta.com/oauth2/default/v1/token"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "auth",
+      "settingName": "redirectUri",
+      "value": "com.kroger.caocool://oauth2redirect"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "auth",
+      "settingName": "clientId",
+      "value": "0oa3bvlwdySh5fBcn4x7"
+    },
+    {
+      "namespaceName": "littlebird",
+      "settingName": "LITTLEBIRD_BASE_URL",
+      "value": "https://dev.littlebird.kroger.biz/api/notifications/v1/"
+    },
+    {
+      "environmentName": "test",
+      "namespaceName": "littlebird",
+      "settingName": "LITTLEBIRD_BASE_URL",
+      "value": "https://uat.littlebird.kroger.biz/api/notifications/v1/"
+    },
+    {
+      "environmentName": "prod",
+      "namespaceName": "littlebird",
+      "settingName": "LITTLEBIRD_BASE_URL",
+      "value": "https://littlebird.kroger.biz/api/notifications/v1/"
+    }
+  ],
+  "globalSettings": [
+    {
+      "name": "environment",
+      "displayName": "Environment",
+      "value": "dev"
+    },
+    {
+      "name": "storeNumber",
+      "displayName": "Store Number",
+      "value": "ci383"
+    }
+  ]
+}

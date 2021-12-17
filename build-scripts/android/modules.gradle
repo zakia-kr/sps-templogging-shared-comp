@@ -1,0 +1,39 @@
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+
+    packagingOptions {
+        exclude 'META-INF'
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+
+    buildTypes {
+        debug {
+            if (isLibrary && hasTests) {
+                testCoverageEnabled true
+            }
+        }
+        release {
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    if (plugins.hasPlugin("kotlin-android")) {
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs += ['-Xjvm-default=all']
+        }
+    }
+}

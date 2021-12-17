@@ -1,0 +1,20 @@
+java {
+    sourceCompatibility = rootProject.ext.javaVersion
+    targetCompatibility = rootProject.ext.javaVersion
+}
+
+if (plugins.hasPlugin("kotlin")) {
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs += ['-Xjvm-default=all']
+        }
+    }
+
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs += ['-Xjvm-default=all']
+        }
+    }
+}

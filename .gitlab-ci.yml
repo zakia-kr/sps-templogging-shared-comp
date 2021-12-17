@@ -1,0 +1,85 @@
+include:
+  - https://gitlab.kroger.com/gitlab/sonar-runner/raw/master/.gitlab-ci.scan.yml
+  - https://gitlab.kroger.com/sps-public/gitlab-common/raw/master/.gitlab-ci.merge.yml
+
+stages:
+  - Build
+  - Test
+  - code_quality
+  - Deploy
+  - release
+  - merge
+
+Build for Unit Test:
+  stage: Build
+  script:
+    - ./gradlew clean assembleDebug
+  artifacts:
+    name: debug_${CI_PIPELINE_ID}_${CI_COMMIT_REF_SLUG}
+    expire_in: 1 week
+    paths:
+      - "**/build"
+  tags:
+    - android-build
+
+Build for QA:
+  stage: Build
+  artifacts:
+    name: qa_${CI_PIPELINE_ID}_${CI_COMMIT_REF_SLUG}
+    expire_in: 1 week
+    paths:
+      - "**/build"
+  script:
+    - ./gradlew clean assembleQa -Pinstrument
+  tags:
+    - android-build
+
+Build for Release:
+  stage: Build
+  artifacts:
+    name: release_${CI_PIPELINE_ID}_${CI_COMMIT_REF_SLUG}
+    expire_in: 1 week
+    paths:
+      - "**/build"
+  only:
+    - dev
+    - /^release.+/
+  script:
+    - ./gradlew clean assembleRelease -Pinstrument
+  tags:
+    - android-build
+
+Unit Test:
+  stage: Test
+  script:
+    - ./gradlew testDebugUnitTestCoverage
+  artifacts:
+    name: unit_${CI_PIPELINE_ID}_${CI_COMMIT_REF_SLUG}
+    when: always
+    expire_in: 1 week
+    paths:
+      - "**/build"
+  dependencies:
+    - Build for Unit Test
+  tags:
+    - android-build
+
+Deploy Release to Artifactory:
+  stage: Deploy
+  script:
+    - ./gradlew artifactoryPublish
+  dependencies:
+    - Build for Release
+  only:
+    - dev
+    - /^release.+/
+  tags:
+    - android-build
+
+code_quality:
+  dependencies:
+    - Unit Test
+  artifacts:
+    name: sonar_${CI_PIPELINE_ID}_${CI_COMMIT_REF_SLUG}
+  except:
+    - tags

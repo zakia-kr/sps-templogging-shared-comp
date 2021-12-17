@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'maven-publish'
+
+apply from: "${rootDir}/build-scripts/modules.gradle"
+
+dependencies {
+    implementation deps.kafCoreLog
+    implementation deps.kafCoreLocation
+    implementation deps.kafCoreMqtt
+    implementation deps.kafCorePreferences
+
+    implementation deps.pahoClient
+    implementation deps.pahoService
+
+    implementation deps.kotlinxJson
+    implementation deps.kotlinxCoroutines
+    implementation deps.kotlinxAndroidxCoroutine
+
+    testImplementation deps.kafCoreMockContext
+    testImplementation deps.junit
+    testImplementation deps.mockito
+    testImplementation deps.mockitoKotlin
+    testImplementation deps.kotlinxCoroutinesTest
+}

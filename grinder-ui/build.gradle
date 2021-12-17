@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'maven-publish'
+
+apply from: "${rootDir}/build-scripts/modules.gradle"
+
+android {
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(':grinder-data')
+
+    implementation deps.kafCoreApplication
+    implementation deps.kafCoreAuth
+    implementation deps.kafCoreLog
+    implementation deps.kafCoreEnvResolver
+    implementation deps.kafCoreHttp
+    implementation deps.kafCorePreferences
+    implementation deps.kafCoreAnalytics
+    implementation deps.kafCoreLocation
+    implementation deps.kafCoreMqtt
+
+    implementation deps.kds
+    implementation deps.satUI
+    implementation deps.spsTutorial
+
+    implementation deps.kotlinStdLib
+    implementation deps.kotlinxCoroutines
+
+    implementation deps.pahoClient
+    implementation deps.pahoService
+
+    implementation deps.gson
+
+    implementation deps.androidxAppCompat
+    implementation deps.androidxFragmentKtx
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    testImplementation deps.junit
+    testImplementation deps.mockito
+    testImplementation deps.mockitoInline
+    testImplementation deps.kafCoreMockContext
+    testImplementation deps.androidxJunitExt
+    testImplementation deps.kotlinxCoroutinesTest
+    testImplementation deps.androidxArchCoreTesting
+    testImplementation deps.androidxCoreTesting
+}

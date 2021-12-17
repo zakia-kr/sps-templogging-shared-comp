@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kds_ink_color_default_200"
+    tools:context=".activity.GrinderHomeActivity">
+
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/sps_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/kds_size_48"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/kds_space_16"
+        android:paddingEnd="@dimen/kds_size_0"
+        android:text="@string/grinder_options"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
+
+    <com.kroger.design.components.KdsAccordion
+        android:id="@+id/accordion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/kds_surface_color_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accordion"
+        app:singleSectionExpanded="false" />
+</androidx.constraintlayout.widget.ConstraintLayout>

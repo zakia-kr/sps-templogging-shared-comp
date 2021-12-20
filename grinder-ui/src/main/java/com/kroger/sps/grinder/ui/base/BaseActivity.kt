@@ -1,9 +1,6 @@
-package com.kroger.sps.grinder.ui.activity
+package com.kroger.sps.grinder.ui.base
 
-import android.view.View
-import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
-import com.kroger.sps.grinder.ui.R
 import com.kroger.sps.mobile.ui.activity.SPSBaseBindingActivity
 
 abstract class BaseActivity<T : ViewBinding> : SPSBaseBindingActivity<T>() {

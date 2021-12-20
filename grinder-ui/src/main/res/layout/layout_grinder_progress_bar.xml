@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="progressStep"
+            type="Integer" />
+        <variable
+            name="progressMax"
+            type="Integer" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/kds_elevation_8"
+        android:paddingHorizontal="@dimen/kds_space_16">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_grinding_trim_step_progress"
+            style="@style/Kds.TextView.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{progressStep.toString().concat(` of `).concat(progressMax.toString())}"
+            android:textColor="@color/kds_ink_color_default_900"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progress_step_one"
+            style="@style/Kds.ProgressBar.Horizontal.Favorable.Compact"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/kds_space_16"
+            android:max="@{progressMax}"
+            android:progress="@{progressStep}"
+            android:progressBackgroundTint="@color/kds_ink_color_positive_100"
+            android:progressTint="@color/kds_ink_color_positive_700"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@id/tv_grinding_trim_step_progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_grinding_trim_step_progress"
+            app:layout_constraintTop_toTopOf="@id/tv_grinding_trim_step_progress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

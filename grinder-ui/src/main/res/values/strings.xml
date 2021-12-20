@@ -3,4 +3,11 @@
     <string name="grinder_application_title">Grinder</string>
     <string name="grinder_options">Grinder Options</string>
     <string name="label_grind">Grind</string>
+
+
+    <string name="label_back_bottom">Back</string>
+    <string name="label_next_bottom">Next</string>
+    <string name="label_print_vertical">Save &amp; Print Label</string>
+    <string name="label_save_vertical">Save</string>
+    <string name="label_null_item">"--"</string>
 </resources>

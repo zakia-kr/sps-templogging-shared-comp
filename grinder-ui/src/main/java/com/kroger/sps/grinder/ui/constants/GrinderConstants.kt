@@ -7,7 +7,7 @@ object GrinderConstants {
     const val EMPTY_STRING = ""
 
     enum class GrinderFlows(val flowName: String, val resourceId: Int) {
-        GRINDING_TRIM("Grinding Trim", R.layout.layout_grinding_trim),
+        GRINDING_TRIM("Grinding Trim", R.layout.activity_grinding_trim_flow),
         CASE_READY_PACK("Case Ready Pack", R.layout.layout_grinding_trim),
         LOG_PRIMAL("Log Primal", R.layout.layout_grinding_trim),
         NO_GRINDS_TODAY("No Grinds Today", R.layout.layout_grinding_trim),

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/kds_ink_color_default_200">
+
+        <include
+            android:id="@+id/missing_fields_banner_final_screen"
+            layout="@layout/layout_missing_fields_banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/kds_space_72"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/kds_size_0"
+            app:layout_constraintBottom_toTopOf="@id/include_vertical_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/missing_fields_banner_final_screen">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/kds_space_24"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/view_top_final_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/kds_space_24" />
+
+
+                <com.kroger.caocool.ui.widget.GrinderSummaryView
+                    android:id="@+id/staff_card_widget_grinding_trim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:actionLabel="Edit"
+                    app:layout_constrainedHeight="true"
+                    app:title="Step 1/2" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/include_vertical_buttons"
+            layout="@layout/layout_grinder_bottom_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nested_scroll_view"
+            app:layout_constraintVertical_bias="1"
+            bind:showBottomBtn="@{true}"
+            bind:showDivider="@{true}"
+            bind:showTopBtn="@{false}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

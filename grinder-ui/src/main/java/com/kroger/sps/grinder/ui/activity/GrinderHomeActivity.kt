@@ -43,13 +43,16 @@ class GrinderHomeActivity : SPSBaseBindingActivity<ActivityGrinderGlobalBinding>
                     LOG_PRIMAL.flowName,
                     NO_GRINDS_TODAY.flowName
                 )
-            ) {
-                println(it)
-                val intentExpiringItem = Intent(
-                    this@GrinderHomeActivity,
-                    GrinderFlowActivity(R.layout.activity_grinder_flow)::class.java
-                )
-                this@GrinderHomeActivity.startActivity(intentExpiringItem)
+            ) { mLayoutId ->
+                println(mLayoutId)
+                mLayoutId.fetchResourceId()?.let {
+                    val intentExpiringItem = Intent(
+                        this@GrinderHomeActivity,
+                        GrinderFlowActivity(it)::class.java
+                    )
+                    this@GrinderHomeActivity.startActivity(intentExpiringItem)
+                }
+
             }
         }
         pairs.add(Pair(getString(R.string.label_grind), rView))

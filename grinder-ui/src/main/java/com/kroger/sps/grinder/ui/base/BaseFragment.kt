@@ -1,10 +1,11 @@
-package com.kroger.sps.grinder.ui.activity
+package com.kroger.sps.grinder.ui.base
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.kroger.mobile.kaf.context.KafContext
 import com.kroger.mobile.kaf.context.KafContextProvider
+import com.kroger.sps.grinder.ui.activity.GrinderFlowActivity
 
 open class BaseFragment : Fragment(), KafContextProvider {
     companion object {

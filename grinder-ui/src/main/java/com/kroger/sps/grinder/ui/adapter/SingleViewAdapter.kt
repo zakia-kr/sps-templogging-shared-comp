@@ -3,14 +3,14 @@ package com.kroger.sps.grinder.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kroger.sps.grinder.ui.databinding.CustomViewBinding
+import com.kroger.sps.grinder.ui.databinding.LayoutCustomSingleRowBinding
 
 class SingleViewAdapter(
     private var mDataList: List<String>,
     private var mClickHandler: (String) -> Unit
 ) : RecyclerView.Adapter<SingleViewAdapter.DataHolder>() {
 
-    inner class DataHolder(private val mBinding: CustomViewBinding) :
+    inner class DataHolder(private val mBinding: LayoutCustomSingleRowBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
         fun bind(s: String) {
             mBinding.apply {
@@ -23,7 +23,7 @@ class SingleViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        DataHolder(CustomViewBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        DataHolder(LayoutCustomSingleRowBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: DataHolder, position: Int) {
         holder.bind(mDataList[position])

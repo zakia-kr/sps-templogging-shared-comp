@@ -1,15 +1,15 @@
-package com.kroger.caocool.ui.widget
+package com.kroger.sps.grinder.ui.widget
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.kroger.caocool.ui.R
-import com.kroger.caocool.ui.databinding.LayoutGrinderStaffInfoBinding
+import com.kroger.sps.grinder.ui.R
+import com.kroger.sps.grinder.ui.databinding.LayoutGrinderSummaryWidgetBinding
 
 class GrinderSummaryView : ConstraintLayout {
-    private var mLayoutGrinderStaffInfoBinding: LayoutGrinderStaffInfoBinding =
-        LayoutGrinderStaffInfoBinding.inflate(
+    private var mLayoutGrinderSummaryWidgetBinding: LayoutGrinderSummaryWidgetBinding =
+        LayoutGrinderSummaryWidgetBinding.inflate(
             LayoutInflater.from(context), this, true
         )
 
@@ -35,14 +35,20 @@ class GrinderSummaryView : ConstraintLayout {
         set(value) {
             field = value
             value?.let {
-                mLayoutGrinderStaffInfoBinding.tvSummaryTitle.text = it
+                mLayoutGrinderSummaryWidgetBinding.tvSummaryTitle.text = it
             }
         }
     private var actionLabel:String? = null
         set(value) {
             field = value
             value?.let {
-                mLayoutGrinderStaffInfoBinding.tvSummaryAction.text = it
+                mLayoutGrinderSummaryWidgetBinding.tvSummaryAction.text = it
             }
         }
+
+    fun setActionClickListener(actionClickListener: (()->Unit)?) {
+        mLayoutGrinderSummaryWidgetBinding.tvSummaryAction.setOnClickListener {
+            actionClickListener?.invoke()
+        }
+    }
 }

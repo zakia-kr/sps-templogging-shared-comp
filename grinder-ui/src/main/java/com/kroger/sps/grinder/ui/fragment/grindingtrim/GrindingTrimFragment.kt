@@ -1,4 +1,4 @@
-package com.kroger.sps.grinder.ui.grindingtrim
+package com.kroger.sps.grinder.ui.fragment.grindingtrim
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.kroger.design.components.KdsDatePickerDialogFragment
 import com.kroger.sps.grinder.ui.R
-import com.kroger.sps.grinder.ui.activity.BaseFragment
+import com.kroger.sps.grinder.ui.base.BaseFragment
 import com.kroger.sps.grinder.ui.databinding.LayoutGrindingTrimBinding
 import java.util.*
 
 class GrindingTrimFragment : BaseFragment() {
-
-    private val mTAG: String = GrindingTrimFragment::class.java.simpleName
 
     private lateinit var mLayoutGrindingTrimBinding: LayoutGrindingTrimBinding
 
@@ -24,12 +22,17 @@ class GrindingTrimFragment : BaseFragment() {
     ): View {
         mLayoutGrindingTrimBinding =
             DataBindingUtil.inflate(inflater, R.layout.layout_grinding_trim, container, false)
+        super.onCreate(savedInstanceState)
         return mLayoutGrindingTrimBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateToolbarTitle("Grinding Trim")
+        showToolbarNavBack()
+        mLayoutGrindingTrimBinding.btnNext.setOnClickListener {
+            navigateToScreen(R.id.grinding_trim_summary)
+        }
         assignDate()
     }
 
@@ -39,7 +42,7 @@ class GrindingTrimFragment : BaseFragment() {
                 this, this.getDate(),
                 minDate = Calendar.getInstance(),
 
-            )
+                )
             datePicker.show(parentFragmentManager, KdsDatePickerDialogFragment.TAG)
             datePicker.setOnClickListener(object :
                 KdsDatePickerDialogFragment.DatePickerClickListener {

@@ -22,7 +22,7 @@
 
         <Button
             android:id="@+id/btn_grinder_top_action"
-            style="@style/Kds.Button.Primary"
+            style="@style/Kds.Button.Favorable.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/kds_space_16"

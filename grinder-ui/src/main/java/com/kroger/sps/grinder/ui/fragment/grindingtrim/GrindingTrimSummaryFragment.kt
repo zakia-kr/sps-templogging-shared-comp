@@ -1,5 +1,6 @@
 package com.kroger.sps.grinder.ui.fragment.grindingtrim
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.kroger.sps.grinder.ui.R
 import com.kroger.sps.grinder.ui.base.BaseFragment
 import com.kroger.sps.grinder.ui.databinding.LayoutGrindingTrimSummaryBinding
 import com.kroger.sps.grinder.ui.model.SummaryData
+import com.kroger.sps.mobile.ui.util.SPSDialogUtil
 
 class GrindingTrimSummaryFragment : BaseFragment() {
 
@@ -43,6 +45,7 @@ class GrindingTrimSummaryFragment : BaseFragment() {
         updateToolbarTitle("Grinding Trim Summary")
         showToolbarNavBack()
         handleSummaryItemsView()
+        handleButtonsClickEvents()
     }
 
     private fun handleSummaryItemsView() {
@@ -69,4 +72,32 @@ class GrindingTrimSummaryFragment : BaseFragment() {
         "Grind Time" to SummaryData("April 24, 2021 -  13:52 EST"),
         "Store Number" to SummaryData("1829118"),
     )
+
+    private fun handleButtonsClickEvents() = mLayoutGrindingTrimSummaryBinding.includeVerticalButtons.apply {
+            btnGrinderBottomAction.setOnClickListener {
+                activity?.finish()
+            }
+            btnGrinderTopAction.setOnClickListener {
+                activity?.let {
+                    SPSDialogUtil.showDialog(
+                        it,
+                        "Clean up the Grinder",
+                        "You have 90 mins to make sure the Grinder is clean",
+                        "Clean Grinder",
+                        "Cancel",
+                        { _, buttonType ->
+                            if (buttonType == DialogInterface.BUTTON_NEGATIVE) {
+                                it.finish()
+                                //TODO add toast
+                            } else {
+                                it.finish()
+                                //TODO add toast
+                            }
+                        }
+
+                    )
+                }
+
+            }
+        }
 }

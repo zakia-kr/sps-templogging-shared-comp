@@ -31,7 +31,10 @@ class GrindingTrimFragment : BaseFragment() {
         updateToolbarTitle("Grinding Trim")
         showToolbarNavBack()
         mLayoutGrindingTrimBinding.btnNext.setOnClickListener {
-            navigateToScreen(R.id.grinding_trim_summary)
+            navigate(R.id.action_grind_trim_to_summary)
+        }
+        this@GrindingTrimFragment.onBackPressed {
+            activity?.finish()
         }
         assignDate()
     }

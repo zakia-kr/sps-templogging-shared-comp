@@ -55,4 +55,8 @@ object GrinderUtils {
 
     internal infix fun Calendar.toDisplayDate(inputFormat: String) =
         SimpleDateFormat(inputFormat, Locale.ENGLISH).format(this.time)
+
+    fun String.newLine() = this.run { this.plus("\n") }
+
+    fun String.newKeyLine() = this.run { this.plus("\n\n") }
 }

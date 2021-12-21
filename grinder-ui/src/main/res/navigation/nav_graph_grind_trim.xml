@@ -3,15 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_grind_trim"
-    app:startDestination="@id/navigation_grinding_trim">
+    app:startDestination="@id/grinder_trim_start">
 
     <fragment
-        android:id="@+id/navigation_grinding_trim"
+        android:id="@+id/grinder_trim_start"
         android:name="com.kroger.sps.grinder.ui.fragment.grindingtrim.GrindingTrimFragment"
-        tools:layout="@layout/layout_grinding_trim"/>
+        tools:layout="@layout/layout_grinding_trim">
+        <action
+            android:id="@+id/action_grind_trim_to_summary"
+            app:destination="@id/grinding_trim_summary"
+            app:launchSingleTop="true" />
+    </fragment>
     <fragment
         android:id="@+id/grinding_trim_summary"
         android:name="com.kroger.sps.grinder.ui.fragment.grindingtrim.GrindingTrimSummaryFragment"
-        tools:layout="@layout/layout_grinding_trim_summary"/>
+        tools:layout="@layout/layout_grinding_trim_summary">
+        <action
+            android:id="@+id/action_summary_to_grind_trim"
+            app:destination="@id/grinder_trim_start"
+            app:launchSingleTop="true" />
+    </fragment>
 
 </navigation>

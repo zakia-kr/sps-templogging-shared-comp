@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_grinder_summary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/kds_space_8"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_grinder_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/kds_space_16">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/kds_space_16">
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tv_summary_title"
-                            style="@style/Kds.TextView.BodyMedium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/kds_ink_color_default_900"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="Step 1/2" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_summary_title"
+                style="@style/grinder.Kds.TextView.BodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_goneMarginTop="@dimen/kds_size_0"
+                android:layout_marginBottom="@dimen/kds_space_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_summary_items"
+                tools:text="Step 1/2" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tv_summary_action"
-                            style="@style/Kds.TextView.BodyMedium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            tools:text="Edit"
-                            android:textColor="@color/kds_ink_color_action_800"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_summary_action"
+                style="@style/grinder.Kds.TextView.BodyLarge.action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_goneMarginTop="@dimen/kds_size_0"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="@dimen/kds_space_16"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Edit" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tv_summary_items"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/kds_space_8"
-                            android:textColor="@color/kds_ink_color_default_900"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_summary_title"
-                            tools:text="@tools:sample/lorem/random"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_summary_items"
+                style="@style/grinder.Kds.TextView.BodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constrainedHeight="true"
+                app:layout_goneMarginTop="@dimen/kds_size_0"
+                android:layout_marginTop="@dimen/kds_space_8"
+                android:lineSpacingExtra="@dimen/kds_space_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_summary_title"
+                tools:text="@tools:sample/lorem/random" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

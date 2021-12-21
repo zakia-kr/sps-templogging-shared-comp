@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="grinder.kds.search.view" parent="Kds.TextInputEditText.Input.Base">
+        <item name="android:background">@color/kds_ink_color_default_50</item>
+    </style>
+
+    <style name="grinder.kds.alert.dialog.title" parent="@style/Kds.TextView.HeaderMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="grinder.kds.alert.dialog.message" parent="@style/Kds.TextView.BodyMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.HeaderMedium" parent="Kds.TextView.HeaderMedium">
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.BodyMedium" parent="Kds.TextView.BodyMedium">
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.BodyMedium.action" parent="Kds.TextView.BodyMedium">
+        <item name="android:textColor">@color/kds_ink_color_action_800</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.BodyMedium.LineSpacing" parent="Kds.TextView.BodyMedium.LineSpacing">
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.BodySmall" parent="Kds.TextView.BodySmall">
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.HeaderExtraLarge" parent="Kds.TextView.HeaderExtraLarge">
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.BodyLarge" parent="Kds.TextView.BodyLarge">
+        <item name="android:textColor">@color/kds_ink_color_default_900</item>
+    </style>
+
+    <style name="grinder.Kds.TextView.BodyLarge.action" parent="Kds.TextView.BodyLarge">
+        <item name="android:textColor">@color/kds_ink_color_action_800</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

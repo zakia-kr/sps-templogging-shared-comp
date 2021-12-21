@@ -33,7 +33,7 @@ open class BaseFragment : Fragment(), KafContextProvider {
         mGrinderActivity.removeNavIcon()
     }
 
-    protected fun navigateToScreen(resId: Int, args: Bundle? = null) {
+    protected fun navigate(resId: Int, args: Bundle? = null) {
         mGrinderActivity.mNavController.navigate(resId, args)
     }
 
